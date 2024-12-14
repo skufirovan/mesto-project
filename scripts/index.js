@@ -16,6 +16,10 @@ const profileForm = document.forms['edit-profile'];
 const nameInput = profileForm.name;
 const jobInput = profileForm.description;
 
+const newCardForm = document.forms['new-place'];
+const newCardTitle = newCardForm['place-name'];
+const newCardLink = newCardForm.link;
+
 function createCard(title, image) {
     const card = cardTemplate.querySelector('.card').cloneNode(true);
     card.querySelector('.card__title').textContent = title;
@@ -50,6 +54,13 @@ profileForm.addEventListener('submit', function(evt) {
 
 addButton.addEventListener('click', function() {
     openModal(cardPopup);
+})
+
+newCardForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    placesList.prepend(createCard(newCardTitle.value, newCardLink.value));
+    closeModal(cardPopup);
+    newCardForm.reset();
 })
 
 const cardImage = document.querySelectorAll('.card__image');

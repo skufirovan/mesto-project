@@ -63,15 +63,20 @@ newCardForm.addEventListener('submit', function(evt) {
     newCardForm.reset();
 })
 
-const cardImage = document.querySelectorAll('.card__image');
-cardImage.forEach(function(ind) {
+const cards = document.querySelectorAll('.card');
+cards.forEach(function(ind) {
     ind.addEventListener('click', function(evt) {
-        imagePopup.querySelector('.popup__image').src = evt.target.src;
-        openModal(imagePopup);
+        if (evt.target.classList.contains('card__image')) {
+            imagePopup.querySelector('.popup__image').src = evt.target.src;
+            imagePopup.querySelector('.popup__caption').textContent = ind.querySelector('.card__title').textContent;
+            console.log(ind.querySelector('.card__title').textContent)
+            openModal(imagePopup);
+        }
     })
 })
 
 popup.forEach(function(ind) {
+    ind.classList.add('popup_is-animated');
     ind.addEventListener('click', function(evt) {
         if (evt.target.classList.contains('popup__close')) {
             closeModal(evt.currentTarget);

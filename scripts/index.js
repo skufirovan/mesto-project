@@ -78,3 +78,18 @@ popup.forEach(function(ind) {
         }
     })
 })
+
+
+const likeButtons = document.querySelectorAll('.card__like-button');
+likeButtons.forEach(function(ind) {
+    ind.addEventListener('click', function(evt) {
+        evt.target.classList.toggle('card__like-button_is-active');
+    })
+})
+
+const deleteButtons = document.querySelectorAll('.card__delete-button');
+deleteButtons.forEach(function(ind) {
+    ind.addEventListener('click', function(evt) {
+        evt.target.closest('.card').remove();
+    })
+})

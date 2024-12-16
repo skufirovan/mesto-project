@@ -1,5 +1,4 @@
 const cardTemplate = document.querySelector('#card-template').content;
-const placesList = document.querySelector('.places__list');
 
 function createCard(title, image) {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
@@ -8,16 +7,16 @@ function createCard(title, image) {
   return card
 }
 
-const likeButtons = document.querySelectorAll('.card__like-button');
-likeButtons.forEach(function(ind) {
-    ind.addEventListener('click', function(evt) {
-        evt.target.classList.toggle('card__like-button_is-active');
-    })
-})
-
-const deleteButtons = document.querySelectorAll('.card__delete-button');
-deleteButtons.forEach(function(ind) {
-    ind.addEventListener('click', function(evt) {
-        evt.target.closest('.card').remove();
-    })
-})
+function makeCardActive(card) {
+    card.addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('card__image')) {
+            imagePopup.querySelector('.popup__image').src = evt.target.src;
+            imagePopup.querySelector('.popup__caption').textContent = card.querySelector('.card__title').textContent;
+            openModal(imagePopup);
+        } else if (evt.target.classList.contains('card__like-button')) {
+            evt.target.classList.toggle('card__like-button_is-active');
+        } else if (evt.target.classList.contains('card__delete-button')) {
+            evt.target.closest('.card').remove();
+        }
+    });
+}

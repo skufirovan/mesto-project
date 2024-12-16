@@ -17,40 +17,38 @@ const newCardTitle = newCardForm['place-name'];
 const newCardLink = newCardForm.link;
 
 initialCards.forEach(function (ind) {
-    placesList.append(createCard(ind.name, ind.link));
-  })
+    let placesList = document.querySelector('.places__list');
+    const card = createCard(ind.name, ind.link);
+    makeCardActive(card);
+    placesList.append(card);
+});
 
 profileEditButton.addEventListener('click', function() {
     profilePopup.querySelector('.popup__input_type_name').value = profileName.textContent;
     profilePopup.querySelector('.popup__input_type_description').value = profileDescription.textContent;
+    const inputList = Array.from(profileForm.querySelectorAll('.popup__input'));
+    const buttonElement = profileForm.querySelector('.popup__button');
+    toggleButtonState(inputList, buttonElement)
     openModal(profilePopup);
-})
+});
 
 profileForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
     closeModal(profilePopup);
-})
+});
 
 addButton.addEventListener('click', function() {
     openModal(cardPopup);
-})
+});
 
 newCardForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
-    placesList.prepend(createCard(newCardTitle.value, newCardLink.value));
+    let placesList = document.querySelector('.places__list');
+    const card = createCard(newCardTitle.value, newCardLink.value);
+    makeCardActive(card);
+    placesList.prepend(card);
     closeModal(cardPopup);
     newCardForm.reset();
-})
-
-const cards = document.querySelectorAll('.card');
-cards.forEach(function(ind) {
-    ind.addEventListener('click', function(evt) {
-        if (evt.target.classList.contains('card__image')) {
-            imagePopup.querySelector('.popup__image').src = evt.target.src;
-            imagePopup.querySelector('.popup__caption').textContent = ind.querySelector('.card__title').textContent;
-            openModal(imagePopup);
-        }
-    })
-})
+});

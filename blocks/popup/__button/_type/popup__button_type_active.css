@@ -1,0 +1,9 @@
+.popup__button_type_active {
+    color: #fff;
+    background: #000;
+}
+
+.popup__button_type_active:hover {
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+  }

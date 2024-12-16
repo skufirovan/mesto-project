@@ -1,4 +1,3 @@
-const popup = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.popup_type_edit');
 const cardPopup = document.querySelector('.popup_type_new-card');
 const imagePopup = document.querySelector('.popup_type_image');
@@ -17,13 +16,9 @@ const newCardForm = document.forms['new-place'];
 const newCardTitle = newCardForm['place-name'];
 const newCardLink = newCardForm.link;
 
-function openModal(popup) {      
-    popup.classList.add('popup_is-opened');
-}
-
-function closeModal(popup) {      
-    popup.classList.remove('popup_is-opened');
-}
+initialCards.forEach(function (ind) {
+    placesList.append(createCard(ind.name, ind.link));
+  })
 
 profileEditButton.addEventListener('click', function() {
     profilePopup.querySelector('.popup__input_type_name').value = profileName.textContent;
@@ -55,17 +50,7 @@ cards.forEach(function(ind) {
         if (evt.target.classList.contains('card__image')) {
             imagePopup.querySelector('.popup__image').src = evt.target.src;
             imagePopup.querySelector('.popup__caption').textContent = ind.querySelector('.card__title').textContent;
-            console.log(ind.querySelector('.card__title').textContent)
             openModal(imagePopup);
-        }
-    })
-})
-
-popup.forEach(function(ind) {
-    ind.classList.add('popup_is-animated');
-    ind.addEventListener('click', function(evt) {
-        if (evt.target.classList.contains('popup__close')) {
-            closeModal(evt.currentTarget);
         }
     })
 })

@@ -8,10 +8,6 @@ function createCard(title, image) {
   return card
 }
 
-initialCards.forEach(function (ind) {
-  placesList.append(createCard(ind.name, ind.link));
-})
-
 const likeButtons = document.querySelectorAll('.card__like-button');
 likeButtons.forEach(function(ind) {
     ind.addEventListener('click', function(evt) {

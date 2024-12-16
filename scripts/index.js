@@ -1,6 +1,3 @@
-const cardTemplate = document.querySelector('#card-template').content;
-const placesList = document.querySelector('.places__list');
-
 const popup = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.popup_type_edit');
 const cardPopup = document.querySelector('.popup_type_new-card');
@@ -19,17 +16,6 @@ const jobInput = profileForm.description;
 const newCardForm = document.forms['new-place'];
 const newCardTitle = newCardForm['place-name'];
 const newCardLink = newCardForm.link;
-
-function createCard(title, image) {
-    const card = cardTemplate.querySelector('.card').cloneNode(true);
-    card.querySelector('.card__title').textContent = title;
-    card.querySelector('.card__image').src = image;
-    return card
-}
-
-initialCards.forEach(function (ind) {
-    placesList.append(createCard(ind.name, ind.link));
-})
 
 function openModal(popup) {      
     popup.classList.add('popup_is-opened');
@@ -81,20 +67,5 @@ popup.forEach(function(ind) {
         if (evt.target.classList.contains('popup__close')) {
             closeModal(evt.currentTarget);
         }
-    })
-})
-
-
-const likeButtons = document.querySelectorAll('.card__like-button');
-likeButtons.forEach(function(ind) {
-    ind.addEventListener('click', function(evt) {
-        evt.target.classList.toggle('card__like-button_is-active');
-    })
-})
-
-const deleteButtons = document.querySelectorAll('.card__delete-button');
-deleteButtons.forEach(function(ind) {
-    ind.addEventListener('click', function(evt) {
-        evt.target.closest('.card').remove();
     })
 })

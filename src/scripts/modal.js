@@ -1,16 +1,16 @@
 const popup = document.querySelectorAll('.popup');
 
-function openModal(popup) { 
+export function openModal(popup) { 
     document.addEventListener('keydown', closeByEsc); 
     popup.classList.add('popup_is-opened');
 }
 
-function closeModal(popup) {   
+export function closeModal(popup) {   
     document.removeEventListener('keydown', closeByEsc);   
     popup.classList.remove('popup_is-opened');
 }
 
-function closeByEsc(evt) {
+export function closeByEsc(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_is-opened');
         if (openedPopup !== null) {

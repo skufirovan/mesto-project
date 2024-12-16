@@ -24,7 +24,7 @@ function hasInvalidInput (inputList) {
     });
 };
   
-function toggleButtonState(inputList, buttonElement) {
+export function toggleButtonState(inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.remove('popup__button_type_active');
         buttonElement.classList.add('popup__button_type_inactive');
@@ -50,7 +50,7 @@ const setEventListeners = (formElement) => {
     });
 };
   
-const enableValidation = () => {
+export const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function (evt) {
@@ -60,5 +60,3 @@ const enableValidation = () => {
         setEventListeners(formElement); 
     });
 };  
-
-enableValidation();

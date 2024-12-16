@@ -1,3 +1,9 @@
+import './pages/index.css';
+import { initialCards } from './scripts/cards';
+import { createCard } from './scripts/card';
+import { openModal, closeModal } from './scripts/modal';
+import { enableValidation, toggleButtonState } from './scripts/validate';
+
 const profilePopup = document.querySelector('.popup_type_edit');
 const cardPopup = document.querySelector('.popup_type_new-card');
 const imagePopup = document.querySelector('.popup_type_image');
@@ -22,6 +28,20 @@ initialCards.forEach(function (ind) {
     makeCardActive(card);
     placesList.append(card);
 });
+
+function makeCardActive(card) {
+    card.addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('card__image')) {
+            imagePopup.querySelector('.popup__image').src = evt.target.src;
+            imagePopup.querySelector('.popup__caption').textContent = card.querySelector('.card__title').textContent;
+            openModal(imagePopup);
+        } else if (evt.target.classList.contains('card__like-button')) {
+            evt.target.classList.toggle('card__like-button_is-active');
+        } else if (evt.target.classList.contains('card__delete-button')) {
+            evt.target.closest('.card').remove();
+        }
+    });
+}
 
 profileEditButton.addEventListener('click', function() {
     profilePopup.querySelector('.popup__input_type_name').value = profileName.textContent;
@@ -52,3 +72,5 @@ newCardForm.addEventListener('submit', function(evt) {
     closeModal(cardPopup);
     newCardForm.reset();
 });
+
+enableValidation();

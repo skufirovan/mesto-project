@@ -1,6 +1,5 @@
 import { checkInputValidity, toggleButtonState } from './validate';
 
-
 // Функция на основе шаблона и поданных на вход параметров возвращает разметку карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
@@ -10,9 +9,8 @@ export function createCard(title, image, likes, id) {
   card.querySelector('.card__image').src = image;
   card.querySelector('.card__like-info').textContent = likes;
   card.querySelector('.card__id').textContent = id;
-  return card
+  return card;
 }
-
 
 const profile = document.querySelector('.profile');
 
@@ -21,7 +19,6 @@ export function setProfileData(name, about, image) {
   profile.querySelector('.profile__description').textContent = about;
   profile.querySelector('.profile__image').style.backgroundImage = `url(${image})`;
 }
-
 
 // Функция валидирует поля формы, используется для формы смены информации о профиле, так как там по умолчанию стоят данные профиля
 export function updateFormState(formElement) {

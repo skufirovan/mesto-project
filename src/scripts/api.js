@@ -39,8 +39,8 @@ export function addCardApi(name, link) {
       authorization: token,
     },
     body: JSON.stringify({
-      name: name,
-      link: link,
+      name,
+      link,
     }),
   });
 }

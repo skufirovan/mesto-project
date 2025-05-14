@@ -1,4 +1,5 @@
 import { updateFormState } from './utils';
+
 const popups = document.querySelectorAll('.popup');
 
 export function openModal(popup) {
@@ -33,15 +34,15 @@ popups.forEach((popup) => {
 
 // Модалка изменения информации профиля
 const profile = document.querySelector('.profile');
-const profileForm = document.forms['edit-profile'];
+const editProfileForm = document.forms['edit-profile'];
 const editProfilePopup = document.querySelector('.popup_type_edit');
 const openEditProfilePopupButton = document.querySelector('.profile__edit-button');
 
 openEditProfilePopupButton.addEventListener('click', () => {
-  profileForm.name.value = profile.querySelector('.profile__title').textContent;
-  profileForm.description.value = profile.querySelector('.profile__description').textContent;
+  editProfileForm.name.value = profile.querySelector('.profile__title').textContent;
+  editProfileForm.description.value = profile.querySelector('.profile__description').textContent;
 
-  updateFormState(profileForm);
+  updateFormState(editProfileForm);
 
   openModal(editProfilePopup);
 });
@@ -50,7 +51,7 @@ openEditProfilePopupButton.addEventListener('click', () => {
 const addCardPopup = document.querySelector('.popup_type_new-card');
 const openAddCardPopupButton = document.querySelector('.profile__add-button');
 
-openAddCardPopupButton.addEventListener('click', function () {
+openAddCardPopupButton.addEventListener('click', () => {
   openModal(addCardPopup);
 });
 

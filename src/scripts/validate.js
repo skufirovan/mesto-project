@@ -43,7 +43,7 @@ const setEventListeners = (formElement) => {
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
+    inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
@@ -53,7 +53,7 @@ const setEventListeners = (formElement) => {
 export const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.popup__form'));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
+    formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
 

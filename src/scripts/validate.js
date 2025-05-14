@@ -1,7 +1,7 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    errorElement.textContent = errorMessage;
     errorElement.classList.add('popup__input-error');
+    errorElement.textContent = errorMessage;
 };
   
 const hideInputError = (formElement, inputElement) => {
@@ -10,7 +10,7 @@ const hideInputError = (formElement, inputElement) => {
     errorElement.textContent = '';
 };
   
-const checkInputValidity = (formElement, inputElement) => {
+export const checkInputValidity = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -56,7 +56,7 @@ export const enableValidation = () => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-  
+
         setEventListeners(formElement); 
     });
-};  
+}; 

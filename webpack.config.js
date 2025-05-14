@@ -12,10 +12,10 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
-    static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
-    compress: true, // это ускорит загрузку в режиме разработки
+    static: path.resolve(__dirname, './dist'),
+    compress: true,
     port: 8080,
-    open: true // сайт будет открываться сам при запуске npm run dev
+    open: true
   },
   module: {
     rules: [

@@ -26,3 +26,20 @@ yarn-error.log*
 .vscode
 .idea
 
+# lint and formatting config files
+.eslintignore
+.eslintcache
+.eslintrc
+.eslintrc.*
+.prettierrc
+.prettierrc.*
+.prettierignore
+.stylelintrc
+.stylelintrc.*
+*.config.js
+*.config.cjs
+*.config.mjs
+*.config.json
+
+!webpack.config.js
+!babel.config.js
